@@ -11,9 +11,28 @@ type Auth {
   user: User!
 }
 
+type Books {
+  author: String!
+
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+  image: String
+  title: String!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
 input ChangePasswordInput {
   newPassword: String!
   oldPassword: String!
+}
+
+input CreateBookInput {
+  author: String!
+  image: String
+  title: String!
 }
 
 input CreatePostInput {
@@ -38,6 +57,7 @@ input LoginInput {
 
 type Mutation {
   changePassword(data: ChangePasswordInput!): User!
+  createBook(data: CreateBookInput!): Books!
   createPost(data: CreatePostInput!): Post!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
@@ -101,6 +121,8 @@ enum PostOrderField {
 }
 
 type Query {
+  getBookById(id: String!): Books!
+  getBooks: [Books!]!
   hello(name: String!): String!
   helloWorld: String!
   me: User!

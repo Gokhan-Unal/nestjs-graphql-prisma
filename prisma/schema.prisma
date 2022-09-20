@@ -35,6 +35,15 @@ model Post {
   authorId  String?
 }
 
+model Books {
+  id String @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String
+  author    String
+  image     String?
+}
+
 enum Role {
   ADMIN
   USER

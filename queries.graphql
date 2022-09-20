@@ -1,0 +1,36 @@
+mutation createAccount {
+    signup(
+        data: {
+            email: "raava@example.com"
+            firstname: "raava"
+            lastname: "light"
+            password: "raava123"
+        }
+    ) {
+        accessToken
+        refreshToken
+        user {
+            email
+            firstname
+            role
+        }
+    }
+}
+
+mutation login {
+    login(data: { email: "raava@example.com", password: "raava123" }) {
+        accessToken
+        refreshToken
+        user {
+            email
+            firstname
+        }
+    }
+}
+
+mutation createBook {
+    createBook(data: { author: "THE UNFOLDING", title: "A.M. Homes" }) {
+        author
+        title
+    }
+}

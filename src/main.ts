@@ -46,6 +46,10 @@ async function bootstrap() {
     app.enableCors();
   }
 
-  await app.listen(process.env.PORT || nestConfig.port || 3000);
+  const PORT = process.env.PORT || nestConfig.port || 4000;
+
+  await app.listen(PORT, () => {
+    console.log(`App started at http://localhost:${PORT}`);
+  });
 }
 bootstrap();
